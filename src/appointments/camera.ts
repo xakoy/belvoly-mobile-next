@@ -1,6 +1,4 @@
-/** @format */
-
-import {execute} from '../web-bridge/native'
+import { execute } from '../web-bridge/native'
 
 /**
  * 照相机
@@ -19,13 +17,13 @@ const serviceName = 'camera'
  * @param {string} callback.data.imgURI 图片的磁盘物理地址
  * @param {string} callback.data.fileSize
  */
-export async function getPicture(op: {compressionRatio: number; size: number}) {
+export async function getPicture(op: { compressionRatio: number; size: number }) {
     const options = {
         ...{
             compressionRatio: 0.1,
-            size: 512000,
+            size: 512000
         },
-        ...op,
+        ...op
     }
 
     return await execute<
@@ -71,9 +69,9 @@ export async function uploadPicture(op: {
             imgURI: '',
             uploadURL: '',
             compressionRatio: 0.1,
-            size: 512000,
+            size: 512000
         },
-        ...op,
+        ...op
     }
 
     return await execute<

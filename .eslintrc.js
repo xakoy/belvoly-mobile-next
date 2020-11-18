@@ -8,11 +8,11 @@ module.exports = {
         ecmaVersion: 2019,
         sourceType: 'module',
         ecmaFeatures: {
-            jsx: true,
-        },
+            jsx: true
+        }
     },
     env: {
         browser: true,
-        node: true,
-    },
+        node: true
+    }
 }

@@ -1,6 +1,6 @@
 /** @format */
 
-import {execute} from '../web-bridge/native'
+import { execute } from '../web-bridge/native'
 
 const serviceName = 'plugin'
 
@@ -10,11 +10,11 @@ const serviceName = 'plugin'
  * @param functionCode 功能的标识
  * @param params 传递的参数 JSON
  */
-export async function show<T>(code: string, functionCode: string, params: {[key: string]: any}) {
+export async function show<T>(code: string, functionCode: string, params: { [key: string]: any }) {
     return await execute<T>(serviceName, 'show', {
         code: code,
         functionCode: functionCode,
-        params: JSON.stringify(params || {}),
+        params: JSON.stringify(params || {})
     })
 }
 
@@ -25,6 +25,6 @@ export async function show<T>(code: string, functionCode: string, params: {[key:
  * @param params 传递的参数 JSON
  * @returns 返回插件的方法返回值
  */
-export async function exec<T>(code: string, functionCode: string, params: {[key: string]: any}) {
+export async function exec<T>(code: string, functionCode: string, params: { [key: string]: any }) {
     return await show(code, functionCode, params)
 }

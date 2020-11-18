@@ -1,9 +1,9 @@
 /** @format */
 
-import {log} from '../log'
-import {Arg, Handle, registerCallback} from './core'
+import { log } from '../log'
+import { registerCallback } from './core'
 
-export async function execute<T>(service: string, action: string, args: {[key: string]: any} = {}) {
+export async function execute<T>(service: string, action: string, args: { [key: string]: any } = {}) {
     return new Promise<T>(resolve => {
         var callbackID = registerCallback(data => {
             // handle && handle(data)

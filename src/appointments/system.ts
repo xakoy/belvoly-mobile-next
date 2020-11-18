@@ -1,6 +1,4 @@
-/** @format */
-
-import {execute} from '../web-bridge/native'
+import { execute } from '../web-bridge/native'
 
 const serviceName = 'system'
 
@@ -10,11 +8,11 @@ const serviceName = 'system'
  * @param {String} account 用户名
  * @param {JSON} data 登录存储的附加数据
  */
-export function signOn(account: string, data: {[key: string]: any}) {
+export function signOn(account: string, data: { [key: string]: any }) {
     var dataString = data ? JSON.stringify(data) : ''
     return execute(serviceName, 'signOn', {
         account: account,
-        data: dataString,
+        data: dataString
     })
 }
 
@@ -24,7 +22,7 @@ export function signOn(account: string, data: {[key: string]: any}) {
  * @param {Boolean} [isClearData=false] 是否清除用户数据
  */
 export function signOut(isClearData: boolean = false) {
-    return execute(serviceName, 'signOut', {isClearData: isClearData})
+    return execute(serviceName, 'signOut', { isClearData: isClearData })
 }
 
 /**
@@ -35,14 +33,14 @@ export function signOut(isClearData: boolean = false) {
           * @param {JSON} keepStateData 保持登录状态的数据
 
           */
-export function login(account: string, data: {[key: string]: any}, keepStateData: {[key: string]: any}) {
+export function login(account: string, data: { [key: string]: any }, keepStateData: { [key: string]: any }) {
     var dataString = data ? JSON.stringify(data) : ''
     var keepStateDataString = keepStateData ? JSON.stringify(keepStateData) : ''
 
     return execute(serviceName, 'login', {
         account: account,
         data: dataString,
-        keepStateData: keepStateDataString,
+        keepStateData: keepStateDataString
     })
 }
 
@@ -53,7 +51,7 @@ export function login(account: string, data: {[key: string]: any}, keepStateData
  * @param {Function} callback 回调函数
  */
 export function logout(isClearData = false) {
-    return execute(serviceName, 'logout', {isClearData: isClearData})
+    return execute(serviceName, 'logout', { isClearData: isClearData })
 }
 
 /**
@@ -65,11 +63,11 @@ export function logout(isClearData = false) {
  * @param {JSON} callback.data.data 登录存储的附加数据
  */
 export async function getUser() {
-    const data = await execute<{data: string; account: string}>(serviceName, 'getUser')
+    const data = await execute<{ data: string; account: string }>(serviceName, 'getUser')
     const userData = data.data ? JSON.parse(data.data) : null
     const result = {
         account: data.account,
-        data: userData,
+        data: userData
     }
     return result
 }
@@ -107,7 +105,7 @@ export function enabledStartupLock(enabled: boolean, timeout: number) {
              */
             isSuccess: boolean
         }>
-    >(serviceName, 'enabledStartupLock', {enabled: enabled, timeout: timeout})
+    >(serviceName, 'enabledStartupLock', { enabled: enabled, timeout: timeout })
 }
 
 /**
@@ -117,7 +115,7 @@ export function enabledStartupLock(enabled: boolean, timeout: number) {
  */
 export function openUrl(url: string) {
     return execute(serviceName, 'openUrl', {
-        url: url,
+        url: url
     })
 }
 
@@ -136,7 +134,7 @@ export function quit() {
  * @param {int} displayTime 显示的时间（单位毫秒）
  */
 export function toast(text: string, displayTime: number) {
-    return execute(serviceName, 'toast', {text: text, displayTime: displayTime})
+    return execute(serviceName, 'toast', { text: text, displayTime: displayTime })
 }
 
 /**
@@ -145,7 +143,7 @@ export function toast(text: string, displayTime: number) {
  * @param {string} phoneNumber 电话号码
  */
 export function makePhoneCall(phoneNumber: string) {
-    return execute(serviceName, 'makePhoneCall', {phoneNumber: phoneNumber})
+    return execute(serviceName, 'makePhoneCall', { phoneNumber: phoneNumber })
 }
 /**
  * 系统信息
@@ -196,5 +194,5 @@ export function webClearCache() {
  * @param {string} appName 应用名称
  */
 export function startApp(appName: string) {
-    return execute(serviceName, 'startApp', {appName: appName})
+    return execute(serviceName, 'startApp', { appName: appName })
 }

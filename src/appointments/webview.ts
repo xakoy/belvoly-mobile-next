@@ -1,6 +1,4 @@
-/** @format */
-
-import {execute} from '../web-bridge/native'
+import { execute } from '../web-bridge/native'
 
 /**
  * 系统类操作集合
@@ -45,7 +43,7 @@ export async function navigate(url: string, direction?: string, isNeedProgressBa
         url: url,
         direction: direction,
         isNeedProgressBar: isNeedProgressBar,
-        isNeedTitle: isNeedTitle,
+        isNeedTitle: isNeedTitle
     })
 }
 
@@ -136,18 +134,18 @@ export async function popup(op: PopupOption) {
                 show: true,
                 color: '#FFFFFF',
                 backgroundColor: '#3492E9',
-                shadowEnabled: false,
+                shadowEnabled: false
             },
             immersiveStatusBar: {
                 enabled: false,
                 style: 'default',
                 backgroundColor: '#3492E9',
-                allowTransparency: false,
+                allowTransparency: false
             },
             onClose: function () {},
-            data: {},
+            data: {}
         },
-        ...op,
+        ...op
     }
 
     config.url = toAbsURL(op.url)
@@ -159,7 +157,7 @@ export async function popup(op: PopupOption) {
         isNeedProgressBar: config.isNeedProgressBar,
         isNeedTitle: config.isNeedTitle,
         titleBar: config.titleBar,
-        immersiveStatusBar: config.immersiveStatusBar,
+        immersiveStatusBar: config.immersiveStatusBar
     })
     if (config.onClose) {
         config.onClose(data)
@@ -172,7 +170,7 @@ export async function popup(op: PopupOption) {
  * @param {boolean} [isImmediate = false] 是否立即后退，如果是，则不触发viewBeforeBack事件
  */
 export function back(isImmediate: boolean = false) {
-    execute(serviceName, 'back', {isImmediate: isImmediate === true})
+    execute(serviceName, 'back', { isImmediate: isImmediate === true })
 }
 
 /**
@@ -189,7 +187,7 @@ export function close() {
  * @param {object} data 传递给打开Popup的方法
  */
 export function closePopup(data: any) {
-    execute(serviceName, 'closePopup', {data: data})
+    execute(serviceName, 'closePopup', { data: data })
 }
 /**
  * [默认三种: back => 后退 点击为后退.  home => 点击为跳到首页 . none => 去掉图标. 并且点击返回键也不能有任何响应]
@@ -201,7 +199,7 @@ type ViewButtonCode = 'back' | 'home' | 'none'
  * @param {string} buttonCode 按钮代号    [默认三种: back => 后退 点击为后退.  home => 点击为跳到首页 . none => 去掉图标. 并且点击返回键也不能有任何响应]
  */
 export function setViewButton(buttonCode: ViewButtonCode) {
-    execute(serviceName, 'setViewButton', {buttonCode: buttonCode})
+    execute(serviceName, 'setViewButton', { buttonCode: buttonCode })
 }
 
 /**
@@ -226,7 +224,7 @@ export function goLoginView() {
  * @param {String} title 标题
  */
 export function setTitle(title: string) {
-    execute(serviceName, 'setTitle', {title: title})
+    execute(serviceName, 'setTitle', { title: title })
 }
 
 /**
@@ -235,7 +233,7 @@ export function setTitle(title: string) {
  * @param {Boolean} disabled 是否禁用
  */
 export function disabledRefresh(disabled: boolean) {
-    execute(serviceName, 'disabledRefresh', {disabled: disabled})
+    execute(serviceName, 'disabledRefresh', { disabled: disabled })
 }
 
 /**
@@ -247,7 +245,7 @@ export function disabledRefresh(disabled: boolean) {
  * @param {Function} callback 按钮被点击后响应的事件
  */
 export async function addFontToolbar(id: string, fontFamily: string, fontName: string) {
-    return await execute(serviceName, 'addFontToolbar', {id: id, fontFamily: fontFamily, fontName: fontName})
+    return await execute(serviceName, 'addFontToolbar', { id: id, fontFamily: fontFamily, fontName: fontName })
 }
 
 /**
@@ -256,7 +254,7 @@ export async function addFontToolbar(id: string, fontFamily: string, fontName: s
  * @param {String} id 按钮的ID，唯一
  */
 export function deleteToolbar(id: string) {
-    execute(serviceName, 'deleteToolbar', {id: id})
+    execute(serviceName, 'deleteToolbar', { id: id })
 }
 
 /**
@@ -266,7 +264,7 @@ export function deleteToolbar(id: string) {
  * @param {Boolean} disabled 是否禁用
  */
 export function disabledToolbar(id: string, disabled: boolean) {
-    execute(serviceName, 'disabledToolbar', {id: id, disabled: disabled})
+    execute(serviceName, 'disabledToolbar', { id: id, disabled: disabled })
 }
 
 /**
@@ -277,7 +275,7 @@ export function disabledToolbar(id: string, disabled: boolean) {
  * @param {Function} callback 按钮被点击后响应的事件
  */
 export async function addTextToolbar(id: string, text: string) {
-    return await execute(serviceName, 'addTextToolbar', {id: id, text: text})
+    return await execute(serviceName, 'addTextToolbar', { id: id, text: text })
 }
 
 /**
@@ -287,7 +285,7 @@ export async function addTextToolbar(id: string, text: string) {
  * @param {String} text 按钮的文字
  */
 export function changeTextToolbar(id: string, text: string) {
-    execute(serviceName, 'changeTextToolbar', {id: id, text: text})
+    execute(serviceName, 'changeTextToolbar', { id: id, text: text })
 }
 
 /**
@@ -297,7 +295,7 @@ export function changeTextToolbar(id: string, text: string) {
  * @param {JSON} callback.data 获取到的数据
  */
 export async function getRequestData<T>() {
-    const data = await execute<{data: string}>(serviceName, 'getRequestData')
+    const data = await execute<{ data: string }>(serviceName, 'getRequestData')
     return JSON.parse(data.data) as T
 }
 
@@ -307,7 +305,7 @@ export async function getRequestData<T>() {
  * @param {Boolean} [false] enabled 是否开启
  */
 export function setHistroyEnabled(enabled: boolean) {
-    return execute(serviceName, 'setHistroyEnabled', {enabled: enabled})
+    return execute(serviceName, 'setHistroyEnabled', { enabled: enabled })
 }
 
 /**
@@ -316,15 +314,15 @@ export function setHistroyEnabled(enabled: boolean) {
  * @param {Boolean} [false] disabled 是否禁用
  */
 export function setHistroyBackDisabled(disabled: boolean) {
-    return execute(serviceName, 'setHistroyBackDisabled', {disabled: disabled})
+    return execute(serviceName, 'setHistroyBackDisabled', { disabled: disabled })
 }
 
 export function addTextViewButton(id: string, text: string) {
-    return execute(serviceName, 'addTextViewButton', {id: id, text: text})
+    return execute(serviceName, 'addTextViewButton', { id: id, text: text })
 }
 
 export function deleteViewButton(id: string) {
-    return execute(serviceName, 'deleteViewButton', {id: id})
+    return execute(serviceName, 'deleteViewButton', { id: id })
 }
 
 /**
@@ -333,7 +331,7 @@ export function deleteViewButton(id: string) {
  * @param {Boolean} isVisible 是否可见
  */
 export function setTitleBarVisible(isVisible: boolean) {
-    return execute(serviceName, 'setTitleBarVisible', {isVisible: isVisible})
+    return execute(serviceName, 'setTitleBarVisible', { isVisible: isVisible })
 }
 
 /**
@@ -342,7 +340,7 @@ export function setTitleBarVisible(isVisible: boolean) {
  * @param {Boolean} enabled 是否启用
  */
 export function enabledImmersiveStatusBar(enabled: boolean) {
-    return execute(serviceName, 'enabledImmersiveStatusBar', {enabled: enabled})
+    return execute(serviceName, 'enabledImmersiveStatusBar', { enabled: enabled })
 }
 
 /**
@@ -351,7 +349,7 @@ export function enabledImmersiveStatusBar(enabled: boolean) {
  * @param {boolean} enabled 是否启用
  */
 export function enabledSwipeBack(enabled: boolean) {
-    return execute(serviceName, 'enabledSwipeBack', {enabled: enabled})
+    return execute(serviceName, 'enabledSwipeBack', { enabled: enabled })
 }
 
 /**
