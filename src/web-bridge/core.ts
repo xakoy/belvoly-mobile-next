@@ -64,7 +64,7 @@ function callback(id: string, args: string | Arg<any>, isDestroyCallback: boolea
 
         if (typeof args === "string") {
             arg = JSON.parse(args);
-        }else {
+        } else {
             arg = args
         }
 
