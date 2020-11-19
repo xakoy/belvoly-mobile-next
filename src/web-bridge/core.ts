@@ -140,7 +140,3 @@ export function registerCallback<T>(handle?: Handle<T>) {
 
     return id
 }
-
-BM.webBridge = {
-    callback: callback
-}

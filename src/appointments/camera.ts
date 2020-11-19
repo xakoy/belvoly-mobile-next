@@ -106,5 +106,16 @@ export async function uploadPicture(op: {
  * 获取到的文本结果
  */
 export async function scanQR() {
-    return await execute<string>(serviceName, 'scanQR', {})
+    return await execute<
+        Readonly<{
+            /**
+             * 操作是否成功
+             */
+            isSuccess: boolean
+            /**
+             * 返回的结果
+             */
+            context: string
+        }>
+    >(serviceName, 'scanQR', {})
 }
