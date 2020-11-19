@@ -16,13 +16,13 @@ const ERRORS: {
 export interface Arg<T> {
     flag?: number
     Flag?: number
-    code: number
-    message: string
-    data: T
+    code?: number
+    message?: string
+    data?: T
 }
 
 function errorHandle(args: Arg<any>) {
-    var error_message = ERRORS[args.code] || args.message
+    var error_message = args.code != null ? ERRORS[args.code] || args.message : args.message
     if (error_message) {
         alert(error_message)
     }
@@ -57,7 +57,7 @@ const handles: HandleCollection = {}
  * @param {String} args参数，为json字符串
  * @param {Boolean} destroyCallback为是否释放该callback，不传时默认为true
  */
-function callback(id: string, args: string | Arg<any>, isDestroyCallback: boolean = true) {
+export function callback(id: string, args: string | Arg<any>, isDestroyCallback: boolean = true) {
     try {
         log('callbackID:' + id + ', args:' + args)
         let arg: Arg<any>
@@ -130,7 +130,7 @@ const exception = {
  * @method registerCallback
  * @returns {String} ID
  */
-export function registerCallback<T>(handle: Handle<T>) {
+export function registerCallback<T>(handle?: Handle<T>) {
     if (!handle) {
         return
     }
