@@ -26,5 +26,5 @@ export async function show<T>(code: string, functionCode: string, params: { [key
  * @returns 返回插件的方法返回值
  */
 export async function exec<T>(code: string, functionCode: string, params: { [key: string]: any }) {
-    return await show(code, functionCode, params)
+    return await show<T>(code, functionCode, params)
 }
