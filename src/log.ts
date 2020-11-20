@@ -1,6 +1,6 @@
-const global = window as any
+const gl = window as any
 export function log(message: string) {
-    if (global.__debug__belvoly === true) {
+    if (gl.__debug__belvoly === true) {
         console.log(message)
     }
 }
