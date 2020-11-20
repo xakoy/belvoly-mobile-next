@@ -1,34 +1,14 @@
 import { execute } from '../web-bridge/native'
+import { DriverInfo, GetAction } from './driver.de'
 
 const serviceName = 'driver'
-
-type Platform = 'android' | 'ios' | 'web' | 'wechat'
-
-interface DriverInfo {
-    /**
-     * 设备名称
-     */
-    name: string
-    /**
-     * 平台
-     */
-    platform: Platform
-    /**
-     * 系统版本
-     */
-    version: string
-    /**
-     * 框架版本
-     */
-    belvolyVersion: string
-}
 
 /**
  * 获取设备信息
  * @method get
  *
  */
-export async function get() {
+export const get: GetAction = async function () {
     return await execute<Readonly<DriverInfo>>(serviceName, 'get', {})
 }
 
