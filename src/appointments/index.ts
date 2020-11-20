@@ -8,5 +8,6 @@ import * as webview from './webview'
 import * as event from './event'
 import * as document from './document'
 import * as file from './file'
+import * as screen from './screen'
 
-export { camera, driver, imageView, location, plugin, system, webview, event, document, file }
+export { camera, driver, imageView, location, plugin, system, webview, event, document, file, screen }
