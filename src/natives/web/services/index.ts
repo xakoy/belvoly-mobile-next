@@ -1,9 +1,11 @@
 import * as driver from './driver'
+import * as webview from './webview'
 
 const services: {
     [key: string]: any
 } = {
-    driver: driver
+    driver,
+    webview
 }
 
 export { services }

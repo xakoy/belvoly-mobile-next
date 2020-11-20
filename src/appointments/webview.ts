@@ -1,4 +1,5 @@
 import { execute } from '../web-bridge/native'
+import { BackAction, OpenAction } from './webview.de'
 
 const serviceName = 'webview'
 
@@ -16,7 +17,12 @@ var toAbsURL = function (url: string) {
  * @param {Boolean} [true] isNeedProgressBar 是否需要显示进度条
  * @param {Boolean} [true] isNeedTitle 是否需要标题
  */
-export async function open(url: string, direction?: string, isNeedProgressBar?: boolean, isNeedTitle?: boolean) {
+export const open: OpenAction = async function (
+    url: string,
+    direction?: string,
+    isNeedProgressBar?: boolean,
+    isNeedTitle?: boolean
+) {
     return await navigate(url, direction, isNeedProgressBar, isNeedTitle)
 }
 
@@ -163,7 +169,7 @@ export async function popup(op: PopupOption) {
  * @method back
  * @param {boolean} [isImmediate = false] 是否立即后退，如果是，则不触发viewBeforeBack事件
  */
-export function back(isImmediate: boolean = false) {
+export const back: BackAction = function (isImmediate: boolean = false) {
     execute(serviceName, 'back', { isImmediate: isImmediate === true })
 }
 
