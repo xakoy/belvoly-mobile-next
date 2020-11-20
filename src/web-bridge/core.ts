@@ -105,8 +105,7 @@ function destroyCallback(callbackId: string) {
  * @code {int} 响应编号
  * @message {String} 消息
  */
-function interfaceData(data: any, flag: number, code: number = 0, message: string = '') {
-    // flag = (flag === undefined) ? true : flag;
+export function interfaceData(data: any, flag: number, code: number = 0, message: string = '') {
     var response = {
         flag: !!flag ? 1 : 0,
         message: message,
