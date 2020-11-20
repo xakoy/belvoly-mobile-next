@@ -1,11 +1,5 @@
 import { execute } from '../web-bridge/native'
 
-/**
- * 系统类操作集合
- * @class webview
- * @module BM.appointment
- *
- */
 const serviceName = 'webview'
 
 var toAbsURL = function (url: string) {

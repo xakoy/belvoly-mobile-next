@@ -26,11 +26,6 @@ interface DriverInfo {
 /**
  * 获取设备信息
  * @method get
- * @example
- *
- *      BM.appointment.driver.get(function(data){
- *          alert("当前的设备是:" + data.name)
- *      })
  *
  */
 export async function get() {
