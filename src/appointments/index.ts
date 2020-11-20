@@ -5,5 +5,7 @@ import * as location from './location'
 import * as plugin from './plugin'
 import * as system from './system'
 import * as webview from './webview'
+import * as event from './event'
+import * as document from './document'
 
-export { camera, driver, imageView, location, plugin, system, webview }
+export { camera, driver, imageView, location, plugin, system, webview, event, document }
