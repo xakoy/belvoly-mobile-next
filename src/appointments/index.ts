@@ -7,5 +7,6 @@ import * as system from './system'
 import * as webview from './webview'
 import * as event from './event'
 import * as document from './document'
+import * as file from './file'
 
-export { camera, driver, imageView, location, plugin, system, webview, event, document }
+export { camera, driver, imageView, location, plugin, system, webview, event, document, file }
