@@ -1,4 +1,5 @@
-import { add, remove, fire as fireEvent, EventContext, SystemEventNameType, EventNameType } from './event'
+import { add, remove, fire as fireEvent, SystemEventNameType, EventNameType } from './event'
+import { EventContext } from './event.de'
 import { back } from './webview'
 
 interface Action {

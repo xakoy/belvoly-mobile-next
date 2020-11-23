@@ -1,4 +1,5 @@
 import { GetAction } from '../../../appointments/location.de'
+import { ServiceBase } from './service-base'
 
 export const get: GetAction = async function () {
     if (navigator.geolocation) {
@@ -26,4 +27,11 @@ export const get: GetAction = async function () {
         })
     }
     throw new Error('浏览器不支持定位（geolocation）API')
+}
+
+export class LocationService extends ServiceBase {
+    async get() {
+        const data = await get()
+        return this.toResult(data)
+    }
 }

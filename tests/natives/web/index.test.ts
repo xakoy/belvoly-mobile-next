@@ -1,4 +1,5 @@
 import { native } from '../../../src/natives/web'
+import { consoleLogCallback } from '../../env'
 
 const callbackMocker = jest.fn()
 
@@ -9,29 +10,36 @@ const callbackMocker = jest.fn()
 }
 
 beforeEach(() => {
+    consoleLogCallback.mockClear()
     callbackMocker.mockClear()
 })
 test('未知服务', async () => {
     const cid = 'cid'
     await native.exec('unkonw-service', 'xx', cid, '')
-    expect(callbackMocker.mock.calls[0]).toEqual([cid, { flag: 0, code: 9999 }, true])
+    expect(consoleLogCallback.mock.calls[consoleLogCallback.mock.calls.length - 1]).toMatchObject([
+        { flag: 0, code: 10000 }
+    ])
 })
 
 test('未知方法', async () => {
     const cid = 'cid'
     await native.exec('driver', 'unkonw-action', cid, '')
-    expect(callbackMocker.mock.calls[0]).toEqual([cid, { flag: 0, code: 9999 }, true])
+    expect(consoleLogCallback.mock.calls[consoleLogCallback.mock.calls.length - 1]).toMatchObject([
+        { flag: 0, code: 10001 }
+    ])
 })
 
 test('正常调用', async () => {
     const cid = 'cid'
     await native.exec('driver', 'get', cid, '')
-    expect(callbackMocker.mock.calls[0][1]).toHaveProperty('flag', 1)
+    const result = JSON.parse(callbackMocker.mock.calls[0][1])
+    expect(result).toMatchObject({ flag: 1 })
 })
 
 test('参数错误', async () => {
     const cid = 'cid'
     const arg = '{flag: s}'
     await native.exec('driver', 'get', cid, arg)
-    expect(callbackMocker.mock.calls[0][1]).toHaveProperty('flag', 0)
+    const result = JSON.parse(callbackMocker.mock.calls[0][1])
+    expect(result).toMatchObject({ flag: 0 })
 })

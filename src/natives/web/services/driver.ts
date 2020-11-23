@@ -1,6 +1,7 @@
 import { GetAction } from '../../../appointments/driver.de'
+import { ServiceBase } from './service-base'
 
-export const get: GetAction = async function () {
+const get: GetAction = async function () {
     return {
         /*
          * 设备名称
@@ -22,5 +23,12 @@ export const get: GetAction = async function () {
          * @type string
          */
         belvolyVersion: '3.0'
+    }
+}
+
+export class DriverService extends ServiceBase {
+    get(arg: any) {
+        const result = get()
+        return this.toResult(result)
     }
 }

@@ -1,4 +1,5 @@
 import { execute } from '../web-bridge/native'
+import { AddAction, EventContext, RemoveAction, FireAction } from './event.de'
 
 const serviceName = 'event'
 
@@ -29,17 +30,12 @@ const SYSTEM_EVENTS = {
 export type SystemEventNameType = keyof typeof SYSTEM_EVENTS
 
 export type EventNameType = SystemEventNameType | string
-/**
- * 事件上下文
- * current = 当前view, openview = 打开的view
- */
-export type EventContext = 'current' | 'openview'
 
 /**
  * 订阅事件
  * @param eventName 事件名称
  */
-export function add(eventName: EventNameType) {
+export const add: AddAction = function (eventName: EventNameType) {
     return execute<{
         eventName: EventNameType
         data: any
@@ -50,7 +46,7 @@ export function add(eventName: EventNameType) {
  * 注销订阅事件
  * @param eventName 事件名称
  */
-export function remove(eventName: EventNameType) {
+export const remove: RemoveAction = function (eventName: EventNameType) {
     return execute(serviceName, 'remove', { eventName: eventName })
 }
 
@@ -61,7 +57,11 @@ export function remove(eventName: EventNameType) {
  * @param {JSON} [data] 触发事件的参数 JSONString.
  * @param {string} [context=openview] 触发事件的范围, 可选值. current = 当前view, openview = 打开的view
  */
-export function fire(eventName: string, data: { [key: string]: any }, context: EventContext = 'openview') {
+export const fire: FireAction = function (
+    eventName: string,
+    data: { [key: string]: any },
+    context: EventContext = 'openview'
+) {
     var dataString = data ? JSON.stringify(data) : ''
     context = context || 'openview'
 
