@@ -23,9 +23,3 @@ export const fire = function (name: string, data: any, context: string) {
         }
     }
 }
-
-export const isRegister = function (name: string) {
-    var e = events[name]
-
-    return !!e
-}
