@@ -10,21 +10,31 @@ const callbackMocker = jest.fn()
 }
 
 const geolocationCallback = jest.fn()
-;(navigator as any).geolocation = {
-    getCurrentPosition: function (callback: Function, errorCb: Function) {
-        geolocationCallback()
-            .then((data: any) => {
-                callback(data)
-            })
-            .catch((error: any) => {
-                errorCb(error)
-            })
-    }
-}
 
 beforeEach(() => {
+    ;(navigator as any).geolocation = {
+        getCurrentPosition: function (callback: Function, errorCb: Function) {
+            geolocationCallback()
+                .then((data: any) => {
+                    callback(data)
+                })
+                .catch((error: any) => {
+                    errorCb(error)
+                })
+        }
+    }
     geolocationCallback.mockClear()
     callbackMocker.mockClear()
+})
+
+test('定位服务 get方法，不支持定位', async () => {
+    try {
+        ;(navigator as any).geolocation = null
+        await get()
+        expect(false).toEqual(true)
+    } catch (e) {
+        expect(e.message).toEqual('浏览器不支持定位（geolocation）API')
+    }
 })
 
 test('定位服务 get 方法', async () => {
