@@ -43,7 +43,13 @@ async function handle(
     try {
         const arg = args ? JSON.parse(args) : {}
         const result = await action.call(service, arg)
-        response.result = result
+        response.result = {
+            flag: result.flag,
+            code: result.code,
+            data: result.data,
+            message: result.message
+        }
+        response.isDestroyCallback = result.isDestroyCallback
         return response
     } catch (e) {
         response.result = {

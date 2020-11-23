@@ -10,11 +10,11 @@ const back: BackAction = function () {
 }
 
 export class WebViewService extends ServiceBase {
-    open({ url }: { url: string }) {
-        const result = open(url)
+    async open({ url }: { url: string }) {
+        const result = await open(url)
         return this.toResult(result)
     }
-    back({ isImmediate }: { isImmediate: boolean }) {
+    async back({ isImmediate }: { isImmediate: boolean }) {
         back(isImmediate)
     }
 
