@@ -1,5 +1,5 @@
 import { GetAction } from '../../../appointments/driver.de'
-import { ServiceBase } from './service-base'
+import { DriverService as WebDriverService } from '../../web/services/driver'
 
 const get: GetAction = async function () {
     return {
@@ -7,12 +7,12 @@ const get: GetAction = async function () {
          * 设备名称
          * @type string
          */
-        name: 'Browser',
+        name: 'wechat',
         /*
          * 平台 android 或 ios
          * @type string
          */
-        platform: 'web',
+        platform: 'wechat',
         /*
          * 系统版本
          * @type string
@@ -26,7 +26,7 @@ const get: GetAction = async function () {
     }
 }
 
-export class DriverService extends ServiceBase {
+export class DriverService extends WebDriverService {
     async get(arg: any) {
         const result = await get()
         return this.toResult(result)

@@ -1,6 +1,6 @@
+import './ent'
 import { native } from '../../../src/natives/web'
 import { consoleLogCallback } from '../../env'
-
 const callbackMocker = jest.fn()
 
 ;(global as any).BM = {
@@ -33,7 +33,7 @@ test('正常调用', async () => {
     const cid = 'cid'
     await native.exec('driver', 'get', cid, '')
     const result = JSON.parse(callbackMocker.mock.calls[0][1])
-    expect(result.data).toMatchObject({ platform: 'web' })
+    expect(result.data).toMatchObject({ platform: 'wechat' })
 })
 
 test('参数错误', async () => {
