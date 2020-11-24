@@ -1,5 +1,5 @@
 import { AddAction, EventContext, FireAction, RemoveAction } from '../../../appointments/event.de'
-import { add as addEvent, remove as removeEvent, isRegister, fire as fireEvent } from './event-manage'
+import { add as addEvent, remove as removeEvent, fire as fireEvent } from './event-manage'
 import { ServiceBase } from './service-base'
 
 const addAction: AddAction = async function (eventName) {
