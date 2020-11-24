@@ -1,4 +1,4 @@
-import { ServiceBaseConstructor } from './service-base'
+import { ServiceBaseConstructor } from '../../native'
 import { DriverService } from './driver'
 import { WebViewService } from './webview'
 import { LocationService } from './location'

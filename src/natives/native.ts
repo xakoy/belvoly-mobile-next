@@ -8,3 +8,15 @@ export interface ActionResult {
     message?: string
     data?: any
 }
+
+export interface ServiceBaseConstructor {
+    new (): ServiceBaseType
+}
+export interface ServiceBaseType {
+    callbackID: string
+    [key: string]: any
+}
+
+export interface ServiceFactory {
+    (code: string): ServiceBaseConstructor
+}

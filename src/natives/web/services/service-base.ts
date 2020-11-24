@@ -1,10 +1,4 @@
-export interface ServiceBaseConstructor {
-    new (): ServiceBaseType
-}
-export interface ServiceBaseType {
-    callbackID: string
-    [key: string]: any
-}
+import { ServiceBaseType } from '../../native'
 
 export class ServiceBase implements ServiceBaseType {
     constructor() {}
