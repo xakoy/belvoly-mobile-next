@@ -33,7 +33,7 @@ test('正常调用', async () => {
     const cid = 'cid'
     await native.exec('driver', 'get', cid, '')
     const result = JSON.parse(callbackMocker.mock.calls[0][1])
-    expect(result.data).toMatchObject({ platform: 'dingtalk' })
+    expect(result.data).toMatchObject({ platform: 'wechat' })
 })
 
 test('参数错误', async () => {

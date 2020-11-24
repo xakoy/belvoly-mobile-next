@@ -1,3 +1,3 @@
-;(global as any).BM_WeChat = {
+;(global as any).BM_DingTalk = {
     ready: true
 }

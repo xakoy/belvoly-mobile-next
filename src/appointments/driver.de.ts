@@ -1,4 +1,4 @@
-export type Platform = 'android' | 'ios' | 'web' | 'wechat'
+export type Platform = 'android' | 'ios' | 'web' | 'wechat' | 'dingtalk'
 
 export interface DriverInfo {
     /**
