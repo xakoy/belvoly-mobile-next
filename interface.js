@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // android和IOS对webview暴露的接口名为_belvolyNative
 var _belvolyNative = {
     /**
@@ -649,6 +650,13 @@ appointment.system = {
      * @param {int} displayTime 显示的时间（单位毫秒）
      */
     toast: function (text, displayTime) {
+
+    },
+    /**
+     * 设置系统角标的数字，根据不同的系统，不同展示。目前只支持华为和苹果，其它系统的调用此方法没有任何效果
+     * @param {int} number 角标数字，如果为0，则角标消失
+     */
+    setBadge(number) {
 
     }
 };

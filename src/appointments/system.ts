@@ -196,3 +196,11 @@ export function webClearCache() {
 export function startApp(appName: string) {
     return execute(serviceName, 'startApp', { appName: appName })
 }
+
+/**
+ * 设置系统角标的数字，根据不同的系统，不同展示。目前只支持华为和苹果，其它系统的调用此方法没有任何效果
+ * @param {int} number 角标数字，如果为0，则角标消失
+ */
+export function setBadge(number: number) {
+    return execute(serviceName, 'setBadge', { number: number })
+}
