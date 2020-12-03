@@ -1,4 +1,5 @@
-Belvoly-Mobile.js
+[![Build Status](https://travis-ci.org/xakoy/belvoly-mobile-next.svg?branch=master)](https://travis-ci.org/xakoy/belvoly-mobile-next)  
+# Belvoly-Mobile.js
 
 适配UBOX和UMobile JS库，让前端具备和原生App交互的功能
 
