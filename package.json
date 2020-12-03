@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "build:full": "rollup -c",
-    "prepublish": "npm run build && npm run build:full",
+    "prepublishOnly": "npm run build && npm run build:full",
     "test": "jest",
     "test-c": "jest --coverage"
   },
