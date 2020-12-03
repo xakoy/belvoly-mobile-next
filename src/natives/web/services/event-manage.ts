@@ -3,8 +3,9 @@ const events: {
 } = {}
 
 export const add = function (name: string) {
-    events[name] = true
-    return fire(name, null, '')!
+    return new Promise<any>(resolve => {
+        events[name] = true
+    })
 }
 
 export const remove = function (name: string) {

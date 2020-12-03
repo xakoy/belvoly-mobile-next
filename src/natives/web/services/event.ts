@@ -3,7 +3,7 @@ import { add as addEvent, remove as removeEvent, fire as fireEvent } from './eve
 import { ServiceBase } from './service-base'
 
 const addAction: AddAction = async function (eventName) {
-    return addEvent(eventName)
+    return await addEvent(eventName)
 }
 
 const fireAction: FireAction = async function (eventName, data, context) {
