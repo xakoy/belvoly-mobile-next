@@ -9,7 +9,8 @@
     "build:full": "rollup -c",
     "prepublishOnly": "npm run build && npm run build:full",
     "test": "jest",
-    "test-c": "jest --coverage"
+    "test-c": "jest --coverage",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "@types/jest": "^26.0.15",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
+    "conventional-changelog-cli": "^2.1.1",
     "coveralls": "^3.1.0",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
