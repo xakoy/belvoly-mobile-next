@@ -1,6 +1,6 @@
 [![Npm](https://badgen.net/npm/v/belvoly-mobile)](https://www.npmjs.com/package/belvoly-mobile)
 [![Build Status](https://travis-ci.org/xakoy/belvoly-mobile-next.svg?branch=master)](https://travis-ci.org/xakoy/belvoly-mobile-next)  
-[![Coverage Status](https://coveralls.io/repos/github/xakoy/belvoly-mobile-next/badge.svg?branch=3.0.0)](https://coveralls.io/github/xakoy/belvoly-mobile-next?branch=3.0.0)
+[![Coverage Status](https://coveralls.io/repos/github/xakoy/belvoly-mobile-next/badge.svg?branch=master)](https://coveralls.io/github/xakoy/belvoly-mobile-next?branch=master)
 # Belvoly-Mobile.js
 
 适配UBOX和UMobile JS库，让前端具备和原生App交互的功能
