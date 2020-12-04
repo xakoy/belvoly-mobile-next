@@ -1,0 +1,14 @@
+
+
+name: publish release changlog
+
+on:
+  push:
+    branches:
+      - release-it
+
+jobs:
+  publish-npm:
+    - name: release-it
+    runs-on: ubuntu-latest
+    uses: TheRealWaldo/release-it@v0.2.1
