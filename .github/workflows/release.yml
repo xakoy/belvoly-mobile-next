@@ -1,5 +1,3 @@
-
-
 name: publish release changlog
 
 on:
@@ -8,7 +6,7 @@ on:
       - release-it
 
 jobs:
-  publish-npm:
-    - name: release-it
+  release-it:
     runs-on: ubuntu-latest
-    uses: TheRealWaldo/release-it@v0.2.1
+    steps:
+      - uses: TheRealWaldo/release-it@v0.2.1
