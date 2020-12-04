@@ -1,5 +1,5 @@
 [![Npm](https://badgen.net/npm/v/belvoly-mobile)](https://www.npmjs.com/package/belvoly-mobile)
-[![Build Status](https://travis-ci.org/xakoy/belvoly-mobile-next.svg?branch=master)](https://travis-ci.org/xakoy/belvoly-mobile-next)  
+[![Build Status](https://travis-ci.org/xakoy/belvoly-mobile-next.svg?branch=master)](https://travis-ci.org/xakoy/belvoly-mobile-next) 
 [![Coverage Status](https://coveralls.io/repos/github/xakoy/belvoly-mobile-next/badge.svg?branch=master)](https://coveralls.io/github/xakoy/belvoly-mobile-next?branch=master)
 # Belvoly-Mobile.js
 
