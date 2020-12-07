@@ -10,6 +10,7 @@ jobs:
      name: change version
      runs-on: ubuntu-latest
      steps:
+      - name: Checkout code
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
         with:
@@ -18,3 +19,4 @@ jobs:
       - run: npm install
       - run: npm version ${{ github.ref }} --no-git-tag-version --allow-same-version
       - run: git commit -a -m 'change version ${{ github.ref }}' && git push
+        
