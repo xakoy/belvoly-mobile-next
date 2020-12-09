@@ -3,10 +3,15 @@
 import { log } from '../log'
 import { registerCallback } from './core'
 
-export async function execute<T>(service: string, action: string, args: { [key: string]: any } = {}) {
+export async function execute<T>(
+    service: string,
+    action: string,
+    args: { [key: string]: any } = {},
+    handle?: (data: T) => void
+) {
     return new Promise<T>(resolve => {
         var callbackID = registerCallback(data => {
-            // handle && handle(data)
+            handle && handle(data as T)
             resolve(data as T)
         })
         var arg = JSON.stringify(args)

@@ -35,11 +35,11 @@ export type EventNameType = SystemEventNameType | string
  * 订阅事件
  * @param eventName 事件名称
  */
-export const add: AddAction = function (eventName: EventNameType) {
-    return execute<{
-        eventName: EventNameType
-        data: any
-    }>(serviceName, 'add', { eventName: eventName })
+export const add = function (
+    eventName: EventNameType,
+    action: (data: { eventName: EventNameType; data: any }) => void
+) {
+    execute(serviceName, 'add', { eventName: eventName }, action)
 }
 
 /**

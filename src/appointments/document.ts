@@ -61,7 +61,7 @@ export function on(eventName: EventNameType, fn: Action) {
     }
 
     if (ev.length == 0) {
-        add(eventName).then(function (data) {
+        add(eventName, function (data) {
             var name = data.eventName
             var evs = getEvent(name)
 
