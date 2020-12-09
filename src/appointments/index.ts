@@ -9,5 +9,6 @@ import * as event from './event'
 import * as document from './document'
 import * as file from './file'
 import * as screen from './screen'
+import * as audio from './audio'
 
-export { camera, driver, imageView, location, plugin, system, webview, event, document, file, screen }
+export { camera, driver, imageView, location, plugin, system, webview, event, document, file, screen, audio }

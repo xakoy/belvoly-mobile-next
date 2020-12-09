@@ -1,17 +1,18 @@
 <template>
-    <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
-        <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-    </div>
+    <page-view title="首页" :isMain="true">
+        <van-grid>
+            <van-grid-item text="audio" icon="play-circle-o" :to="{ name: 'audio' }" />
+        </van-grid>
+    </page-view>
 </template>
 
 <script lang="ts">
+import { PageView } from '@/components'
 import { Options, Vue } from 'vue-class-component'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
 
 @Options({
     components: {
-        HelloWorld
+        PageView
     }
 })
 export default class Home extends Vue {}

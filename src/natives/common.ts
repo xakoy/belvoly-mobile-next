@@ -71,11 +71,21 @@ export const exec = async function (
         options.args,
         serviceFactory
     )
+    execCore(options.callbackId, response)
+}
+
+export const execCore = function (
+    callbackId: string,
+    response: {
+        result?: ActionResult
+        isDestroyCallback: boolean
+    }
+) {
     const gl = window as any
     const BM = gl.BM
     if (response.result && response.result.code && response.result.code >= 10000) {
         log(response.result)
     } else {
-        BM.webBridge.callback(options.callbackId, JSON.stringify(response.result), response.isDestroyCallback)
+        BM.webBridge.callback(callbackId, JSON.stringify(response.result), response.isDestroyCallback)
     }
 }

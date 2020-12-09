@@ -1,10 +1,16 @@
+import { execCore } from '../../common'
+
 const events: {
-    [key: string]: boolean
+    [key: string]: string[]
 } = {}
 
-export const add = function (name: string) {
+export const add = function (name: string, callbackID: string) {
     return new Promise<any>(resolve => {
-        events[name] = true
+        let ev = events[name]
+        if (!ev) {
+            ev = events[name] = []
+        }
+        events[name].push(callbackID)
     })
 }
 
@@ -17,10 +23,18 @@ export const remove = function (name: string) {
 
 export const fire = function (name: string, data: any, context: string) {
     var e = events[name]
-    if (e) {
-        return {
-            eventName: name,
-            data: data
-        }
+    if (e && e.length > 0) {
+        e.forEach(item => {
+            execCore(item, {
+                result: {
+                    flag: 1,
+                    data: {
+                        eventName: name,
+                        data: data
+                    }
+                },
+                isDestroyCallback: false
+            })
+        })
     }
 }

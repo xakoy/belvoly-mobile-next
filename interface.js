@@ -543,6 +543,71 @@ appointment.location = {
     }
 };
 
+/**
+ * 音频
+ */
+appointment.audio = {
+    /**
+     * 开始录音
+     */
+    startRecord: function() {
+        return {
+            /**
+             * 是否开启成功
+             */
+            isSuccess: Boolean,
+            /**
+             * 是否用户没有允许权限
+             */
+            isUserNotAllow?: Boolean,
+            /**
+             * 没有开启成功的原因
+             */
+            errorMessage: String
+        }
+    },
+    /**
+     * 停止录音
+     */
+    stopRecord: function() {
+        return {
+            /**
+             * 是否开启成功
+             */
+            isSuccess: Boolean,
+            /**
+             * 没有开启成功的原因
+             */
+            errorMessage?: String,
+            /**
+             * 录音文件的物理路径
+             */
+            localURI?: string
+        }
+    },
+    /**
+     * 播放语音
+     * @param {string} localURI  需要播放的音频的本地 URI，由stopRecord接口获得
+     */
+    playVoice: function(localURI) {
+
+    },
+    /**
+     * 暂停播放语音
+     * @param {string} localURI  需要暂停播放的音频的本地 URI，由stopRecord接口获得
+     */
+    pauseVoice: function(localURI) {
+
+    },
+    /**
+     * 停止播放语音
+     * @param {string} localURI  需要停止播放的音频的本地 URI，由stopRecord接口获得
+     */
+    stopVoice: function(localURI) {
+
+    },
+}
+
 
 /**
  * 系统
@@ -1245,9 +1310,22 @@ appointment.events = {
      */
     KeyboardHide: function(){
 
+    },
+    /**
+     * 监听录音停止事件
+     * @param {string} 录音的本地文件URI
+     */
+    voiceRecordEnd: function(localURI) {
+        
+    },
+    /**
+     * 监听播放音频停止事件
+     * @param {string} 音频本地文件URI
+     */
+    voicePlayEnd: function(localURI) {
+
     }
 }
-
 
 /**
  * 客户端响应格式
