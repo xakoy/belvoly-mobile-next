@@ -5,7 +5,7 @@ const gl = window as any
 const Recorder = gl.Recorder
 
 let recordInstance: any = null
-function open() {
+function open(maxSeconds: number) {
     return new Promise<{
         error?: {
             isUserNotAllow?: boolean
@@ -29,6 +29,11 @@ function open() {
             () => {
                 recordInstance = rec
                 rec.start()
+                if (maxSeconds > 0) {
+                    setTimeout(() => {
+                        stop()
+                    }, maxSeconds * 1000)
+                }
                 resolve({})
             },
             (msg: string, isUserNotAllow: boolean) => {
@@ -41,8 +46,9 @@ function open() {
 const stop = function () {
     return new Promise<{
         audioELement?: HTMLAudioElement
+        duration?: number
         error?: {
-            message?: String
+            message?: string
         }
     }>(resolve => {
         if (!recordInstance) {
@@ -72,25 +78,27 @@ const stop = function () {
                 audio.style.height = '0'
                 audio.style.position = 'absolute'
                 // audio.play()
-                resolve({ audioELement: audio })
+                resolve({ audioELement: audio, duration: duration })
                 audio.addEventListener('ended', function () {
                     //
                     fire('voicePlayEnd', { localURI: audio.id }, 'current')
                 })
+                fire('voiceRecordEnd', { isSuccess: true, localURI: audio.id, duration: duration }, 'current')
             },
             function (msg: string) {
                 resolve({ error: { message: '录音失败:' + msg } })
                 rec.close() //可以通过stop方法的第3个参数来自动调用close
                 // rec = null
                 recordInstance = null
+                fire('voiceRecordEnd', { isSuccess: false, error: { message: '录音失败:' + msg } }, 'current')
             }
         )
     })
 }
 
-const startRecord: StartRecordAction = async function () {
+const startRecord: StartRecordAction = async function (maxSeconds) {
     //
-    const { error } = await open()
+    const { error } = await open(maxSeconds)
     if (error) {
         return { isSuccess: false, isUserNotAllow: error.isUserNotAllow, errorMessage: error.message }
     } else {
@@ -99,7 +107,7 @@ const startRecord: StartRecordAction = async function () {
 }
 
 const stopRecord: StopRecordAction = async function () {
-    const { error, audioELement } = await stop()
+    const { error, audioELement, duration } = await stop()
     if (error) {
         return {
             isSuccess: false,
@@ -109,6 +117,7 @@ const stopRecord: StopRecordAction = async function () {
     }
     return {
         isSuccess: true,
+        duration: duration,
         localURI: audioELement ? audioELement.id : ''
     }
 }
@@ -139,8 +148,8 @@ const stopVoice = async function (uri: string) {
 }
 
 export class AudioService extends ServiceBase {
-    async startRecord(arg: any) {
-        const result = await startRecord()
+    async startRecord({ maxSeconds }: { maxSeconds: number }) {
+        const result = await startRecord(maxSeconds)
         return this.toResult(result)
     }
 

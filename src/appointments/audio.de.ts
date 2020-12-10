@@ -3,32 +3,36 @@ export interface StopRecordAction {
         /**
          * 是否开启成功
          */
-        isSuccess: Boolean
+        isSuccess: boolean
         /**
          * 没有开启成功的原因
          */
-        errorMessage?: String
+        errorMessage?: string
         /**
          * 录音文件的物理路径
          */
-        localURI?: String
+        localURI?: string
+        /**
+         * 录音的时长,单位（毫秒）
+         */
+        duration?: number
     }>
 }
 
 export interface StartRecordAction {
-    (): Promise<{
+    (maxSeconds: number): Promise<{
         /**
          * 是否开启成功
          */
-        isSuccess: Boolean
+        isSuccess: boolean
         /**
          * 是否用户没有允许权限
          */
-        isUserNotAllow?: Boolean
+        isUserNotAllow?: boolean
         /**
          * 没有开启成功的原因
          */
-        errorMessage?: String
+        errorMessage?: string
     }>
 }
 

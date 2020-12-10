@@ -5,8 +5,8 @@ const serviceName = 'audio'
 /**
  * 开始录音
  */
-export const startRecord: StartRecordAction = function () {
-    return execute(serviceName, 'startRecord')
+export const startRecord: StartRecordAction = function (maxSeconds: number = 0) {
+    return execute(serviceName, 'startRecord', { maxSeconds: maxSeconds })
 }
 /**
  * 停止录音

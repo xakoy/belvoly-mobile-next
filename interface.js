@@ -549,21 +549,22 @@ appointment.location = {
 appointment.audio = {
     /**
      * 开始录音
+     * @param {number}} maxSeconds 最长录制多长时间，单位秒，如果为0,则不限制时间，直到手动停止或其它情况停止
      */
-    startRecord: function() {
+    startRecord: function(maxSeconds) {
         return {
             /**
              * 是否开启成功
              */
-            isSuccess: Boolean,
+            isSuccess: true,
             /**
              * 是否用户没有允许权限
              */
-            isUserNotAllow?: Boolean,
+            isUserNotAllow?: false,
             /**
              * 没有开启成功的原因
              */
-            errorMessage: String
+            errorMessage: ''
         }
     },
     /**
@@ -572,17 +573,21 @@ appointment.audio = {
     stopRecord: function() {
         return {
             /**
-             * 是否开启成功
+             * 是否录音成功
              */
             isSuccess: Boolean,
             /**
-             * 没有开启成功的原因
+             * 没有停止成功的原因
              */
             errorMessage?: String,
             /**
              * 录音文件的物理路径
              */
-            localURI?: string
+            localURI?: String,
+            /**
+             * 录音的时长,单位（毫秒）
+             */
+            duration?: Number
         }
     },
     /**
@@ -1313,9 +1318,12 @@ appointment.events = {
     },
     /**
      * 监听录音停止事件
+     * @param {boolean} 是否录音成功
      * @param {string} 录音的本地文件URI
+     * @param {string} 录音的时长，单位毫秒
+     * @param {string} 没有录制成功的原因
      */
-    voiceRecordEnd: function(localURI) {
+    voiceRecordEnd: function(isSuccess, localURI,duration, errorMessage,) {
         
     },
     /**
