@@ -1,0 +1,66 @@
+﻿{
+  "login": {
+    "enabled": true,
+    "url": "https://smartoffice.beyondbit.com:2001/sso/signOn",
+    "successUrl": "https://smartoffice.beyondbit.com:2001/sso/success",
+    "keepLoginStateUrl": "https://smartoffice.beyondbit.com:2001/sso/login",
+    "timeout": 43200,
+    "mode": "manual"
+  },
+  "title": "移动框架演示",
+  "baseURI": "http://bsdn.beyondbit.com/Frontend/BelvolyMobile/next-examples",
+  "defaultShowProgressBar": false,
+  "titleBar": {
+    "show": false,
+    "color": "#333333",
+    "backgroundColor": "#FFFFFF",
+    "shadowEnabled": false
+  },
+  "immersiveStatusBar": {
+    "enabled": false,
+    "style": "dark",
+    "backgroundColor": "#FFFFFF",
+    "allowTransparency": false
+  },
+  "main": {
+    "monopolyUrl": "http://bsdn.beyondbit.com/Frontend/BelvolyMobile/next-examples"
+  },
+  "launcher": {
+    "waitSeconds": 2000,
+    "bannerURI": "~/app/resources/launcher.jpg",
+    "banner": {
+      "uri": "~/app/resources/launcher.jpg",
+      "backgroundColor": "#3492E9",
+      "stretch": "Fill"
+    },
+    "bannerFit": [
+      {
+        "scale": "10:9",
+        "fits": [
+          {
+            "widthPixel": 960,
+            "uri": "~/app/resources/launcher_10x9_960.jpg",
+            "backgroundColor": "#3492E9",
+            "stretch": "None"
+          },
+          {
+            "widthPixel": 1600,
+            "uri": "~/app/resources/launcher_10x9_1600.jpg",
+            "backgroundColor": "#3492E9",
+            "stretch": "None"
+          }
+        ]
+      }
+    ]
+  },
+  "security": {
+    "level": 1,
+    "maximumLoginAttempts": 3,
+    "maximumUnlockAttempts": 3,
+    "unlockFailedLockTime": 3000,
+    "loginFailedLockTime": 3000,
+    "minimumPointsOfGestureLock": 5,
+    "screenTimeout": 1000
+  },
+  "version": "0.1.2"
+}

@@ -1,0 +1,35 @@
+﻿{
+  "version": "0.1.2",
+  "debugger": false,
+  "configURI": "http://bsdn.beyondbit.com/Frontend/BelvolyMobile/next-examples/app/config.json",
+  "client": {
+    "android": {
+      "greaterThenVersion": "0.2.5",
+      "lastestVersion": "0.2.5",
+      "lastestBuildVersion": 5,
+      "downloadLastesUrl": "http://uffice.beyondbit.com/app/client/u-mobile.apk",
+      "mustUpgradeText": {
+        "title": "检测到有新的版本",
+        "message": "U-Mobile 有重大更新，必须更新后，才能继续使用"
+      },
+      "upgradeText": {
+        "title": "检测到有新的版本",
+        "message": "1、优化APP启动速度\r\n2、修复启动图在多种屏幕下显示问题\r\n3、用户体验"
+      }
+    },
+    "ios": {
+      "greaterThenVersion": "1.0.0",
+      "lastestVersion": "1.0.0",
+      "lastestBuildVersion": 5,
+      "downloadLastesUrl": "https://mobile.beyondbit.com:2005/plist/U-Mobile.plist",
+      "mustUpgradeText": {
+        "title": "检测到有新的版本",
+        "message": "U-Mobile 有重大更新，必须更新后，才能继续使用"
+      },
+      "upgradeText": {
+        "title": "检测到有新的版本",
+        "message": "1、优化APP启动速度\r\n2、修复启动图在多种屏幕下显示问题\r\n3、用户体验"
+      }
+    }
+  }
+}
